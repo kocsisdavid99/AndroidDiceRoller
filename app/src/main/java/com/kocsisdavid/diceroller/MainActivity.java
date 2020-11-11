@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView diceImage;
+    TextView rolledNumber;
     Random random = new Random();
 
     @Override
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         diceImage = findViewById(R.id.dice_image);
+        rolledNumber = findViewById(R.id.rolled_number);
 
         diceImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,26 +40,32 @@ public class MainActivity extends AppCompatActivity {
         switch (i){
             case 1:
                 diceImage.setImageResource(R.drawable.dice1);
+                rolledNumber.setText(Integer.toString(i));
                 break;
 
             case 2:
                 diceImage.setImageResource(R.drawable.dice2);
+                rolledNumber.setText(Integer.toString(i));
                 break;
 
             case 3:
                 diceImage.setImageResource(R.drawable.dice3);
+                rolledNumber.setText(Integer.toString(i));
                 break;
 
             case 4:
                 diceImage.setImageResource(R.drawable.dice4);
+                rolledNumber.setText(Integer.toString(i));
                 break;
 
             case 5:
                 diceImage.setImageResource(R.drawable.dice5);
+                rolledNumber.setText(Integer.toString(i));
                 break;
 
             case 6:
                 diceImage.setImageResource(R.drawable.dice6);
+                rolledNumber.setText(Integer.toString(i));
                 break;
         }
     }
