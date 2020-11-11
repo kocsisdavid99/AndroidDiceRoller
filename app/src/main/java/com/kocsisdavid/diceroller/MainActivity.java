@@ -2,6 +2,8 @@ package com.kocsisdavid.diceroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView diceImage;
     TextView rolledNumber;
     Random random = new Random();
+    Context context = this;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         diceImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                playRollSound(mp);
                 rotateDice();
             }
         });
@@ -72,5 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setRolledNumber (int i){
         rolledNumber.setText(Integer.toString(i));
+    }
+
+    private void playRollSound (MediaPlayer mp){
+        mp = MediaPlayer.create(context, R.raw.roll);
+        mp.start();
     }
 }
