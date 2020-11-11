@@ -40,33 +40,37 @@ public class MainActivity extends AppCompatActivity {
         switch (i){
             case 1:
                 diceImage.setImageResource(R.drawable.dice1);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
 
             case 2:
                 diceImage.setImageResource(R.drawable.dice2);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
 
             case 3:
                 diceImage.setImageResource(R.drawable.dice3);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
 
             case 4:
                 diceImage.setImageResource(R.drawable.dice4);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
 
             case 5:
                 diceImage.setImageResource(R.drawable.dice5);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
 
             case 6:
                 diceImage.setImageResource(R.drawable.dice6);
-                rolledNumber.setText(Integer.toString(i));
+                setRolledNumber(i);
                 break;
         }
+    }
+
+    private void setRolledNumber (int i){
+        rolledNumber.setText(Integer.toString(i));
     }
 }
