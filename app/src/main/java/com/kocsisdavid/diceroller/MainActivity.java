@@ -3,6 +3,7 @@ package com.kocsisdavid.diceroller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +11,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.seismic.ShakeDetector;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ShakeDetector.Listener {
 
     ImageView diceImage;
     TextView rolledNumber;
@@ -21,10 +25,16 @@ public class MainActivity extends AppCompatActivity {
     Context context = this;
     MediaPlayer mp;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SensorManager sensorManager = (SensorManager)
+                getSystemService(SENSOR_SERVICE);
+        ShakeDetector sd = new ShakeDetector(this);
+        sd.start(sensorManager);
 
         diceImage = findViewById(R.id.dice_image);
         rolledNumber = findViewById(R.id.rolled_number);
@@ -36,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 rotateDice();
             }
         });
+    }
+
+    @Override public void hearShake() {
+        playRollSound(mp);
+        rotateDice();
     }
 
     private void rotateDice() {
